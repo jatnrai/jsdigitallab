@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { FaEnvelope, FaPhone } from "react-icons/fa";
+import CommonModal from "@/components/common/CommonModal";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -8,6 +10,7 @@ export default function ContactPage() {
     email: "",
     message: "",
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -20,84 +23,104 @@ export default function ContactPage() {
     console.log("Form submitted:", formData);
     alert("Thanks! Your message has been sent.");
     setFormData({ name: "", email: "", message: "" });
+    setIsModalOpen(false); // close modal if open
   };
 
   return (
-    <section className="py-24 bg-gray-50">
-      <div className="max-w-4xl mx-auto px-6">
-        <h1 className="text-4xl font-bold text-gray-900 text-center mb-6">
-          Contact Us
+    <section className="bg-gray-50">
+      {/* Top CTA Section */}
+      <div className="py-20 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center rounded-b-3xl shadow-lg mb-16">
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
+          Get a Free Quotation from Our Experts
         </h1>
-        <p className="text-center text-gray-800 mb-12">
-          Have a project in mind? Reach out and we’ll help you bring it to life.
+        <p className="max-w-2xl mx-auto text-lg md:text-xl">
+          Share your project idea with{" "}
+          <span className="font-semibold">JSDigitalLab</span> and our experts
+          will provide a detailed, free quotation. {"Let's"} turn your vision
+          into reality!
         </p>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="mt-8 px-10 py-4 bg-white text-blue-600 font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition transform"
+        >
+          Request Now
+        </button>
+      </div>
 
+      {/* Contact Form + Info */}
+      <div className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-12 items-start">
+        {/* Contact Form */}
         <form
           onSubmit={handleSubmit}
-          className="bg-white p-8 rounded-xl shadow-md space-y-6"
+          className="bg-white p-10 rounded-3xl shadow-2xl space-y-6"
         >
-          <div>
-            <label
-              htmlFor="name"
-              className="block font-medium mb-2 text-gray-900"
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600"
-            />
-          </div>
+          <h2 className="text-2xl font-bold mb-6 text-gray-900">
+            Send Us a Message
+          </h2>
 
-          <div>
-            <label
-              htmlFor="email"
-              className="block font-medium mb-2 text-gray-900"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600"
-            />
-          </div>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="w-full px-5 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition shadow-sm"
+          />
 
-          <div>
-            <label
-              htmlFor="message"
-              className="block font-medium mb-2 text-gray-900"
-            >
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows={5}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600"
-            ></textarea>
-          </div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full px-5 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition shadow-sm"
+          />
+
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            rows={6}
+            value={formData.message}
+            onChange={handleChange}
+            required
+            className="w-full px-5 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition shadow-sm"
+          ></textarea>
 
           <button
             type="submit"
-            className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition w-full"
+            className="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:scale-105 transition transform"
           >
             Send Message
           </button>
         </form>
+
+        {/* Contact Info Cards */}
+        <div className="space-y-6 my-auto">
+          <div className="bg-white/40 backdrop-blur-xl p-6 rounded-3xl shadow-lg hover:shadow-2xl transition flex items-center gap-4">
+            <div className="w-16 h-16 flex items-center justify-center bg-gradient-to-tr from-blue-400 to-blue-600 text-white rounded-full shadow-lg text-2xl">
+              <FaEnvelope />
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900">Email</h3>
+              <p className="text-gray-700">contact@jsdigitallab.com</p>
+            </div>
+          </div>
+
+          <div className="bg-white/40 backdrop-blur-xl p-6 rounded-3xl shadow-lg hover:shadow-2xl transition flex items-center gap-4">
+            <div className="w-16 h-16 flex items-center justify-center bg-gradient-to-tr from-green-400 to-green-600 text-white rounded-full shadow-lg text-2xl">
+              <FaPhone />
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900">Phone</h3>
+              <p className="text-gray-700">+91 8860483417</p>
+            </div>
+          </div>
+        </div>
       </div>
+
+      {isModalOpen && <CommonModal closeModal={() => setIsModalOpen(false)} />}
     </section>
   );
 }

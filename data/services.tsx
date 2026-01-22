@@ -1,9 +1,9 @@
 import webImg from "@/public/web_development .jpg";
 import mobileImg from "@/public/mobile_app_dev.jpg";
-import seoImg from "@/public/seo-dev.jpg";
-import aiImg from "@/public/AI-dev.jpeg";
-import marketingImg from "@/public/digital-marketing.avif";
-import uiuxImg from "@/public/UI-UX-dev.avif";
+import seoImg from "@/public/seo_dev.jpg";
+import aiImg from "@/public/AI_dev.jpeg";
+import marketingImg from "@/public/digital_marketing.avif";
+import uiuxImg from "@/public/UI_UX_dev.avif";
 
 import {
   FaGlobe,
