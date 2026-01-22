@@ -19,30 +19,49 @@ export default async function ServiceDetailsPage({ params }: Props) {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative py-32">
+      <section className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center py-16 sm:py-24">
+        {/* Background */}
         <div className="absolute inset-0 -z-10">
           <Image
             src={service.image}
             alt={service.title}
-            className="w-full h-full object-cover"
             fill
             priority
+            className="object-cover"
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-6">
-          <div className="bg-white/20 backdrop-blur-xl rounded-3xl p-12 md:p-16 text-center shadow-2xl border border-white/20 transform hover:-translate-y-2 transition-all duration-500">
-            <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 drop-shadow-lg">
+        {/* Content */}
+        <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6">
+          <div
+            className="bg-white/25 backdrop-blur-lg rounded-2xl sm:rounded-3xl 
+                    p-6 sm:p-10 md:p-14 
+                    text-center shadow-2xl border border-white/20"
+          >
+            <h1
+              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl 
+                     font-extrabold text-gray-900 leading-tight"
+            >
               {service.title}
             </h1>
-            <p className="text-lg md:text-2xl mt-6 text-gray-800 max-w-3xl mx-auto leading-relaxed">
+
+            <p
+              className="text-base sm:text-lg md:text-xl 
+                    mt-4 sm:mt-6 
+                    text-gray-800 max-w-3xl mx-auto leading-relaxed"
+            >
               {service.shortDescription}
             </p>
 
             <a
               href="/contact"
-              className="inline-block mt-10 px-10 py-4 font-semibold rounded-full text-white bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              className="inline-block mt-8 sm:mt-10 
+                   px-8 sm:px-10 py-3 sm:py-4 
+                   text-sm sm:text-base font-semibold 
+                   rounded-full text-white 
+                   bg-gradient-to-r from-blue-500 to-indigo-600 
+                   shadow-lg"
             >
               Get in Touch
             </a>
